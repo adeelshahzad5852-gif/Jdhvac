@@ -1,4 +1,21 @@
+# ============================================================
+# PREVIEW MODE — search engines are blocked.
+#
+# This site is on a temporary vercel.app address so Daniel can
+# review it. It must not appear in Google until:
+#   1. the real domain is registered, and
+#   2. his TACL license number is on the page, and
+#   3. he has seen it and agreed.
+#
+# TO GO PUBLIC: replace this whole file with
+#
+#   User-agent: *
+#   Allow: /
+#
+#   Sitemap: https://www.jdhvacrsolutions.com/sitemap.xml
+#
+# and remove the "noindex" meta tag from the <head> of all five
+# pages (search for PREVIEW MODE).
+# ============================================================
 User-agent: *
-Allow: /
-
-Sitemap: https://www.jdhvacrsolutions.com/sitemap.xml
+Disallow: /
