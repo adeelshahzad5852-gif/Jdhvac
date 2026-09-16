@@ -13,7 +13,7 @@ Plain HTML and CSS. **No framework, no build step, no JavaScript.** Open any
 |---|------|-----|
 | 1 | **Register the domain** in Daniel's name. Everything is written for `jdhvacrsolutions.com`. | Adeel |
 | 2 | **Get Daniel's Texas TACL license number.** The whole TDLR footer block is **commented out** on all five pages behind a `LAUNCH BLOCKER` comment, because publishing "Regulated by the TDLR" without a number asserts a license nobody here has verified, and a visible `TACL######` redaction looks worse than no line at all. Uncomment it and fill in the number on all five pages. Every competitor shows theirs. | Daniel |
-| 3 | **Point Vercel at this repo.** Root directory, no build command, output is the repo root. | Adeel |
+| 3 | **Point Vercel at this repo** &mdash; needs Adeel's Vercel login, which this session does not have. Steps are at the bottom of this file. | Adeel |
 | 4 | **Add the website URL to his Google Business Profile.** It is currently blank. This is what actually sends traffic to the site. | Daniel |
 
 ### Changing the domain
@@ -245,3 +245,39 @@ Three independent audits were run against the finished site. What changed:
 - External links now open in a new tab, and the site's own stylesheet loads
   before Google Fonts rather than queuing behind it.
 - A Vercel redirect sends `/index.html` to `/` so the homepage has one URL.
+
+
+---
+
+## Deploying to Vercel
+
+This session has no Vercel credentials, so it cannot do this step. It takes
+about two minutes:
+
+1. Go to **vercel.com/new** and sign in with the same GitHub account.
+2. Find **adeelshahzad5852-gif/jdhvac** in the list and click **Import**.
+3. Leave everything on its defaults:
+   - Framework Preset: **Other**
+   - Root Directory: `./`
+   - Build Command: **empty**
+   - Output Directory: **empty**
+   - Install Command: **empty**
+   It is plain HTML, so there is nothing to build.
+4. Under **Git Branch**, pick `claude/great-franklin-ru98dm` (that is where the
+   site lives; `main` is empty).
+5. Click **Deploy**.
+
+Vercel gives it a free `something.vercel.app` address straight away. Every push
+to that branch redeploys it, exactly like goodcallai.org.
+
+When the real domain is registered, add it under
+**Project → Settings → Domains**, then do the find-and-replace described at the
+top of this file so the canonical tags, the schema, `robots.txt` and
+`sitemap.xml` all point at it.
+
+### Before it is publicly findable
+
+`robots.txt` currently allows every search engine. That is right for launch,
+but the license number still has to go in first (blocker 2 above) and Daniel
+has to see it and agree. If it goes on a `vercel.app` address purely for him
+to review, consider blocking indexing until the real domain is ready.
