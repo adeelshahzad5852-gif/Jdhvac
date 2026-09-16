@@ -69,7 +69,9 @@ Posts straight to **Web3Forms** as a normal HTML form. No JavaScript involved.
 ## Photographs
 
 11 images in `assets/img/`, all taken from Daniel's own Google Business Profile
-and resized to 1400px wide, ~1.9MB total.
+and re-encoded at 1100px wide (900px for the portrait shots), ~1.2MB total.
+That is roughly 2x the largest size any of them is ever displayed at, which is
+enough for a retina screen and no more.
 
 **Every photo on the site comes from Daniel's own Google Business Profile, and
 there is no stock photography anywhere.** None of the seven competitor sites
@@ -212,3 +214,34 @@ Three independent audits were run against the finished site. What changed:
 - No separate equipment-room page was built. It is the rarest thing he does and
   no competitor advertises it, so it is worth its own page later, but that is a
   scope decision for Adeel.
+
+
+**Technical and accessibility audit — what changed**
+- **Review star ratings were invisible to screen readers.** `aria-label` on a
+  bare `<div>` is ignored by ARIA, so all 22 ratings announced as five "black
+  star" glyphs or nothing. They now read "Rated 5 out of 5 stars" — verified in
+  Chromium's accessibility tree.
+- **Nothing on the site had a focus style except form fields**, and the one that
+  existed was amber on white at 1.99:1. There is now an explicit `:focus-visible`
+  ring: dark on light surfaces, amber on dark ones, both well over 3:1.
+- **Three contrast failures fixed** — `--amber-deep` was 4.427:1 on the alt
+  background (needs 4.5), form-field borders 2.01:1 and ghost-button borders
+  2.37:1 (both need 3:1). All now pass; the ratios are in the commit message.
+- **The LCP image was lazy-loaded** on commercial and residential, deferring the
+  one image that decides how fast the page feels.
+- **Images were ~4x the pixels ever displayed.** index went from 1502 KB to
+  854 KB, commercial 1500 KB to 1031 KB, residential 477 KB to 259 KB.
+- **`immutable` one-year caching on un-fingerprinted files.** A returning
+  visitor could have been stuck with a stale stylesheet for a year with no way
+  to bust it. Images keep a 30-day cache; CSS now revalidates.
+- **Footer headings jumped h2 to h4** on all five pages.
+- **The call/text bar sat outside every landmark** — now a labelled `<nav>`.
+- **`aggregateRating` in the JSON-LD was self-serving markup**, which Google
+  disallows on a business's own page. Replaced with `sameAs` pointing at the
+  Google profile Google already reads the rating from.
+- **Added Open Graph tags** so a link texted to someone shows a title, a
+  description and a photograph rather than a bare URL. This site will be shared
+  by text more than any other way.
+- External links now open in a new tab, and the site's own stylesheet loads
+  before Google Fonts rather than queuing behind it.
+- A Vercel redirect sends `/index.html` to `/` so the homepage has one URL.

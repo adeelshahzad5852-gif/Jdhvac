@@ -16,7 +16,7 @@
 
   --amber:      #ffa400;
   --amber-hi:   #ffb733;
-  --amber-deep: #a35f00;   /* amber that passes contrast on light backgrounds */
+  --amber-deep: #9c5b00;   /* passes 4.5:1 on paper, paper-2 and white */
   --amber-ink:  #1a1200;   /* text on amber */
 
   --wrap: 1120px;
@@ -138,7 +138,7 @@ p:last-child { margin-bottom: 0; }
 }
 .btn--amber { background: var(--amber); color: var(--amber-ink); }
 .btn--amber:hover { background: var(--amber-hi); }
-.btn--ghost { border-color: #4a5464; color: var(--white); background: transparent; }
+.btn--ghost { border-color: #8892a1; color: var(--white); background: transparent; }
 .btn--ghost:hover { border-color: var(--amber); color: var(--amber); }
 .btn--outline { border-color: var(--ink); color: var(--ink); background: transparent; }
 .btn--outline:hover { background: var(--ink); color: var(--white); }
@@ -272,12 +272,12 @@ p:last-child { margin-bottom: 0; }
 .field input, .field textarea, .field select {
   font: inherit; font-size: 1rem; color: var(--ink);
   background: var(--white);
-  border: 1px solid #b9b7ae; border-radius: var(--radius);
+  border: 1px solid #6f6d66; border-radius: var(--radius);
   padding: 13px 14px; width: 100%;
 }
 .field textarea { min-height: 120px; resize: vertical; }
 .field input:focus, .field textarea:focus, .field select:focus {
-  outline: 3px solid var(--amber); outline-offset: 1px; border-color: var(--ink);
+  outline: 3px solid var(--ink); outline-offset: 1px; border-color: var(--ink);
 }
 .form__note { font-size: .88rem; color: var(--steel); }
 .hp { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
@@ -425,4 +425,32 @@ body { padding-bottom: 58px; }
   .nav a { font-size: .93rem; padding: 9px 9px; }
   .brand__name { font-size: 1.3rem; }
   .topbar__cta .btn { font-size: .97rem; padding: 12px 15px; }
+}
+
+/* ---------- focus ----------
+   Only form fields had a focus style; everything else fell back to whatever
+   the browser draws, which is thin and weak on the charcoal header in Firefox
+   and Safari. One explicit ring, dark on light surfaces and amber on dark. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.topbar a:focus-visible,
+.hero a:focus-visible,
+.triage a:focus-visible,
+.section--dark a:focus-visible,
+.footer a:focus-visible,
+.callbar a:focus-visible,
+.contact-card a:focus-visible,
+.pagehead a:focus-visible {
+  outline-color: var(--amber);
+}
+.btn--amber:focus-visible,
+.band a:focus-visible,
+.callbar .is-call:focus-visible {
+  outline-color: var(--ink);
 }
