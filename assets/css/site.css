@@ -385,7 +385,7 @@ body { padding-bottom: 58px; }
   .topbar__inner { min-height: 0; gap: 8px; }
   .brand__name { font-size: 1.3rem; }
   .nav { gap: 2px; }
-  .nav a { font-size: .92rem; padding: 7px 8px; }
+  .nav a { font-size: .92rem; padding: 10px 9px; }   /* 40px tap target */
 }
 
 @media (min-width: 900px) {
