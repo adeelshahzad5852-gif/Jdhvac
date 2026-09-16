@@ -375,6 +375,12 @@ body { padding-bottom: 58px; }
 }
 
 @media (max-width: 899px) {
+  /* Pull the 5.0-on-Google strip above the fold on a 390x844 phone. For a
+     one-man business with ten reviews, that rating is the credibility. */
+  .hero { padding-top: 40px; }
+  .triage { margin-bottom: 22px; }
+  .hero__strip { margin-top: 26px; }
+  .hero__lede { margin-bottom: 22px; }
   .topbar__cta { display: none; }
   .topbar__inner { min-height: 0; gap: 8px; }
   .brand__name { font-size: 1.3rem; }

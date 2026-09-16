@@ -12,7 +12,7 @@ Plain HTML and CSS. **No framework, no build step, no JavaScript.** Open any
 | # | What | Who |
 |---|------|-----|
 | 1 | **Register the domain** in Daniel's name. Everything is written for `jdhvacrsolutions.com`. | Adeel |
-| 2 | **Get Daniel's Texas TACL license number.** It appears in the footer of all five pages as `TACL######` in an amber box, impossible to miss. Every competitor shows theirs. | Daniel |
+| 2 | **Get Daniel's Texas TACL license number.** The whole TDLR footer block is **commented out** on all five pages behind a `LAUNCH BLOCKER` comment, because publishing "Regulated by the TDLR" without a number asserts a license nobody here has verified, and a visible `TACL######` redaction looks worse than no line at all. Uncomment it and fill in the number on all five pages. Every competitor shows theirs. | Daniel |
 | 3 | **Point Vercel at this repo.** Root directory, no build command, output is the repo root. | Adeel |
 | 4 | **Add the website URL to his Google Business Profile.** It is currently blank. This is what actually sends traffic to the site. | Daniel |
 
@@ -71,9 +71,14 @@ Posts straight to **Web3Forms** as a normal HTML form. No JavaScript involved.
 11 images in `assets/img/`, all taken from Daniel's own Google Business Profile
 and resized to 1400px wide, ~1.9MB total.
 
-**Every photo on the site is a real JD HVACR Solutions job. There is no stock
-photography anywhere.** None of the seven competitor sites reviewed could say
-that.
+**Every photo on the site comes from Daniel's own Google Business Profile, and
+there is no stock photography anywhere.** None of the seven competitor sites
+reviewed shows a single photograph of a finished job — they run stock images,
+team portraits or SVG placeholders. This is the site's strongest asset.
+
+The site says "from the Google Business Profile" rather than "a job this LLC
+did", because that is what has actually been verified. If Daniel confirms all
+eleven are his own LLC's work, the wording can be strengthened.
 
 ### Deliberately left out — do not add without asking Daniel
 
@@ -87,8 +92,11 @@ that.
 
 ## Decisions already made — do not reopen
 
-- **Both commercial and residential.** The reviews are 9-out-of-10 residential;
-  the photos are 9-out-of-12 commercial. Each page carries the evidence that fits it.
+- **Both commercial and residential.** Reading the review text, most describe
+  work in homes (one, High-Octane Performance, is plainly a business); the
+  photos are 9-out-of-12 commercial. Each page carries the evidence that fits
+  it. Note the residential/commercial split of the reviews is an inference from
+  their wording, not a stated fact — do not put a number on it on the site.
 - **No prices anywhere.** No financing, no maintenance plans, no coupons,
   no diagnostic fee. Adeel's instruction.
 - **No equipment brand logos.** Carrier and Rheem appear in photographs and in
@@ -138,3 +146,69 @@ python3 -m http.server 8000
 ```
 
 Then open `http://localhost:8000`. No install step, no dependencies.
+
+
+---
+
+## Audit findings, and what was done about them
+
+Three independent audits were run against the finished site. What changed:
+
+**Invented facts removed**
+- **Six service-area towns Daniel never named** — Klein, Humble, Westfield, Oak
+  Ridge North, Conroe and Magnolia were added from competitor lists. All six are
+  gone. The site now lists only the four he stated: Spring, Tomball, The
+  Woodlands, Northeast Houston. Magnolia and Conroe are 20+ miles the wrong way;
+  leaving them in would have generated calls he has to turn down.
+- **"Nine of the ten reviews are from homes in North Houston"** — the residential
+  split was an inference and the locations were invented outright. Reworded.
+- **Alt text describing "two technicians"** on four images, on a site whose whole
+  argument is that there is one man. One of the men in the rooftop photo wears
+  another company's branded polo. All head-counts removed.
+- **"Carrier WeatherMaker" (plural)** — only one unit in the photo carries that
+  badge. Reduced to "Carrier".
+- **Capability claims with nothing behind them** — "redundant pairs where
+  downtime is not an option", "first fix through to commissioning", "multi-unit
+  buildings and suites", "property managers with several sites", "curb adaptation
+  and flashing". All removed. Ask Daniel before putting any of them back.
+- **"One name on the van"** — nothing says he has a van, and the one photo with
+  vehicles shows two. Changed to "truck".
+- **"The same three things, ten times over"** — the columns quote seven reviews,
+  not ten.
+
+**Accuracy fixes**
+- Two reviews on the commercial page were **silently truncated** on a page that
+  promises word-for-word quoting. Both restored in full.
+- A **homeowner's review sat under a "business customer" heading**. Relabelled.
+- A caption said spiral duct ran "through a warehouse floor". It runs above it.
+- "Phone lines get answered first" — he has one phone.
+
+**Privacy**
+- The contact map **dropped a pin on 23107 Good Dale Ln, which is his house**.
+  The marker is gone and the map now shows the service area instead. The street
+  address still appears nowhere on the site, and the JSON-LD deliberately omits
+  `streetAddress`.
+
+**US register**
+- Spelling was already clean, but the vocabulary was British: "turns up", "live
+  kit", "first fix", "timber ceiling", "done properly", "fit-out". All changed to
+  what a Texan would say.
+
+**Still open — needs Daniel, not us**
+1. **Are all 11 photographs jobs this LLC did?** They come from his own Google
+   profile, so the site now says exactly that and no more. If any predate the LLC
+   or came from a previous employer, say so.
+2. **Crane lifts, equipment-room work, new construction** — confirm he does each.
+3. **Is he insured?** The word appears nowhere on the site because nobody has
+   confirmed it. Every competitor says it. One sentence would close a real gap.
+4. **How long has he been doing this?** Competitors state 15 years, 30 years,
+   since 1978. Silence reads as brand new.
+5. **A photograph of Daniel.** The site names him seventeen times and never
+   shows him.
+
+**Deliberately NOT done**
+- No response-time or same-day promise was added. Unverified.
+- No email address was added — Adeel's instruction.
+- No separate equipment-room page was built. It is the rarest thing he does and
+  no competitor advertises it, so it is worth its own page later, but that is a
+  scope decision for Adeel.
