@@ -454,3 +454,96 @@ summary:focus-visible,
 .callbar .is-call:focus-visible {
   outline-color: var(--ink);
 }
+
+/* ==========================================================================
+   Cover hero — full-width photograph with the phone number on it.
+   Every reference site opens this way; the old text-only hero did not.
+   ========================================================================== */
+.cover {
+  position: relative;
+  background: var(--ink);
+  min-height: 460px;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.cover__bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .45;
+}
+.cover::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(20,22,26,.94) 0%, rgba(20,22,26,.80) 45%, rgba(20,22,26,.42) 100%);
+}
+.cover__inner { position: relative; z-index: 2; padding-block: 52px; width: 100%; }
+.cover h1 { color: var(--white); max-width: 18ch; margin-bottom: 14px; }
+.cover h1 span { color: var(--amber); display: block; }
+.cover__lede {
+  font-size: 1.15rem; color: #d3d9e2; max-width: 50ch; margin-bottom: 26px;
+}
+.cover__phone {
+  display: inline-flex; flex-direction: column; text-decoration: none;
+  margin-bottom: 20px;
+}
+.cover__phone .label {
+  font-family: var(--font-display); text-transform: uppercase;
+  letter-spacing: .16em; font-size: .78rem; font-weight: 600; color: var(--amber);
+}
+.cover__phone .num {
+  font-family: var(--font-display); font-weight: 700; line-height: 1;
+  font-size: clamp(2.4rem, 6.5vw, 3.4rem); color: var(--white);
+}
+.cover__phone:hover .num { color: var(--amber); }
+.cover__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.cover__badges {
+  display: flex; flex-wrap: wrap; gap: 8px 22px;
+  margin-top: 26px; padding: 0; list-style: none;
+}
+.cover__badges li {
+  font-size: .93rem; color: #d3d9e2; display: flex; align-items: center; gap: 8px;
+}
+.cover__badges a { color: #d3d9e2; }
+.cover__badges .stars { color: var(--amber); letter-spacing: .06em; }
+
+/* ---------- service grid with icons ---------- */
+.services { display: grid; gap: 16px; grid-template-columns: 1fr; }
+.svc {
+  background: var(--white); border: 1px solid var(--line);
+  border-top: 4px solid var(--amber); border-radius: var(--radius);
+  padding: 24px; display: flex; flex-direction: column; gap: 10px;
+}
+.svc svg { width: 40px; height: 40px; color: var(--amber-deep); flex: none; }
+.svc h3 { margin: 0; }
+.svc p { color: var(--steel); margin: 0; font-size: .98rem; }
+
+/* ---------- why us ---------- */
+.why { display: grid; gap: 22px; grid-template-columns: 1fr; }
+.why__item { display: flex; gap: 16px; align-items: flex-start; }
+.why__item svg { width: 32px; height: 32px; color: var(--amber); flex: none; margin-top: 3px; }
+.why__item h3 { margin: 0 0 4px; }
+.why__item p { margin: 0; color: #c2c9d4; font-size: .99rem; }
+
+/* ---------- google review strip ---------- */
+.google-strip {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px 22px; margin-bottom: 30px;
+}
+.google-strip .big {
+  font-family: var(--font-display); font-size: 2.1rem; font-weight: 700;
+  line-height: 1; color: var(--ink);
+}
+.google-strip .stars { color: #f0a500; letter-spacing: .1em; font-size: 1.2rem; }
+.google-strip p { margin: 0; color: var(--steel); font-size: .95rem; }
+
+@media (min-width: 620px) {
+  .services { grid-template-columns: repeat(2, 1fr); }
+  .why { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .cover { min-height: 540px; }
+  .cover__inner { padding-block: 76px; }
+  .services { grid-template-columns: repeat(3, 1fr); }
+  .why { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+}
